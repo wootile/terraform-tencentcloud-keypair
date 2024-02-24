@@ -11,7 +11,8 @@ variable "key_name" {
 
 variable "ssh_public_key_path" {
   type        = string
-  description = "Path to SSH public key directory (e.g. `/secrets`)"
+  description = "Path to SSH public key directory (e.g. `./secrets`)"
+  default     = "./secrets"
 }
 
 variable "ssh_public_key_file" {

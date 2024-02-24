@@ -6,10 +6,9 @@
 module "keypair" {
   source = "github.com/wootile/terraform-tencentcloud-keypair"
 
-  enabled          = true
-  key_name         = "chenming_mbp"
-  generate_ssh_key = true
-
+  key_name            = "chenming_mbp"
+  ssh_public_key_path = "./secrets"
+  generate_ssh_key    = true
 }
 
 provider "tencentcloud" {
@@ -24,7 +23,6 @@ terraform {
     }
   }
 }
-
 ```
 
 <!-- BEGIN_TF_DOCS -->
@@ -32,7 +30,7 @@ terraform {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.7 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_tencentcloud"></a> [tencentcloud](#requirement\_tencentcloud) | >= 1.67.0 |
 
 ## Providers
@@ -68,14 +66,14 @@ No modules.
 | <a name="input_public_key_extension"></a> [public\_key\_extension](#input\_public\_key\_extension) | Public key extension | `string` | `".pub"` | no |
 | <a name="input_ssh_key_algorithm"></a> [ssh\_key\_algorithm](#input\_ssh\_key\_algorithm) | SSH key algorithm | `string` | `"RSA"` | no |
 | <a name="input_ssh_public_key_file"></a> [ssh\_public\_key\_file](#input\_ssh\_public\_key\_file) | Name of existing SSH public key file (e.g. `id_rsa.pub`) | `string` | `null` | no |
-| <a name="input_ssh_public_key_path"></a> [ssh\_public\_key\_path](#input\_ssh\_public\_key\_path) | Path to SSH public key directory (e.g. `/secrets`) | `string` | n/a | yes |
+| <a name="input_ssh_public_key_path"></a> [ssh\_public\_key\_path](#input\_ssh\_public\_key\_path) | Path to SSH public key directory (e.g. `./secrets`) | `string` | `"./secrets"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_key_name"></a> [key\_name](#output\_key\_name) | Name of SSH key |
-| <a name="output_key_pair_id"></a> [key\_pair\_id](#output\_key\_pair\_id) | TencentCloud Key ID |
+| <a name="output_key_name"></a> [key\_name](#output\_key\_name) | SSH key name |
+| <a name="output_key_pair_id"></a> [key\_pair\_id](#output\_key\_pair\_id) | SSH key id |
 | <a name="output_private_key"></a> [private\_key](#output\_private\_key) | Content of the generated private key |
 | <a name="output_private_key_filename"></a> [private\_key\_filename](#output\_private\_key\_filename) | Private Key Filename |
 | <a name="output_public_key"></a> [public\_key](#output\_public\_key) | Content of the generated public key |

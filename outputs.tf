@@ -1,6 +1,6 @@
 output "key_name" {
   value       = try(tencentcloud_key_pair.imported[0].key_name, tencentcloud_key_pair.generated[0].key_name, "")
-  description = "Name of SSH key"
+  description = "SSH key name"
 }
 
 output "public_key" {
@@ -29,6 +29,6 @@ output "private_key_filename" {
 }
 
 output "key_pair_id" {
-  description = "TencentCloud Key ID"
+  description = "SSH key id"
   value       = try(tencentcloud_key_pair.imported[0].id, tencentcloud_key_pair.generated[0].id, "")
 }

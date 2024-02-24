@@ -10,4 +10,3 @@ module "key_pair" {
   generate_ssh_key    = var.generate_ssh_key
 
 }
-
